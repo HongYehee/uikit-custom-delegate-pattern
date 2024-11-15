@@ -21,7 +21,7 @@ final class ViewController: UIViewController {
         setupTableViewConstraints()
     }
     
-    // 내비게이션 바 설정 관련
+    // 내비게이션 바 설정
     func setupNavBar() {
         title = "회원 목록"
         
@@ -40,7 +40,10 @@ final class ViewController: UIViewController {
     // 테이블 뷰 설정
     func setupTableView() {
         tableView.dataSource = self
+        tableView.delegate = self
+        
         tableView.rowHeight = 60
+        tableView.register(MyTableViewCell.self, forCellReuseIdentifier: "MemberCell")
     }
     
     // 배열에 데이터가 생기도록 멤버를 만드는 함수
@@ -64,11 +67,32 @@ final class ViewController: UIViewController {
 
 // TableView 사용 시 UITableViewDataSource 프로토콜 채택
 extension ViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memberListManager.getMembersList().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell() // TODO:
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MemberCell", for: indexPath) as! MyTableViewCell
+        
+        cell.member = memberListManager[indexPath.row]
+        cell.selectionStyle = .none
+        
+        return cell
+    }
+}
+
+extension ViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // 다음 화면으로 넘어가는 코드
+        let detailVC = DetailViewController()
+        
+        let array = memberListManager.getMembersList()
+        detailVC.member = array[indexPath.row]
+        
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }

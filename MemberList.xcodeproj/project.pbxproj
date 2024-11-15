@@ -16,6 +16,8 @@
 		8D7ACF4D2CE5CA5B00E71C27 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7ACF4C2CE5CA5B00E71C27 /* Member.swift */; };
 		8D7ACF4F2CE6DFA100E71C27 /* MemberListManagger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7ACF4E2CE6DFA100E71C27 /* MemberListManagger.swift */; };
 		8D7ACF512CE6E4FA00E71C27 /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7ACF502CE6E4FA00E71C27 /* MyTableViewCell.swift */; };
+		8D7ACF532CE7192B00E71C27 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7ACF522CE7192B00E71C27 /* DetailViewController.swift */; };
+		8D7ACF552CE7194F00E71C27 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7ACF542CE7194F00E71C27 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		8D7ACF4C2CE5CA5B00E71C27 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		8D7ACF4E2CE6DFA100E71C27 /* MemberListManagger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListManagger.swift; sourceTree = "<group>"; };
 		8D7ACF502CE6E4FA00E71C27 /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
+		8D7ACF522CE7192B00E71C27 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		8D7ACF542CE7194F00E71C27 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				8D7ACF402CE5C1B600E71C27 /* ViewController.swift */,
+				8D7ACF522CE7192B00E71C27 /* DetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -87,6 +92,7 @@
 			children = (
 				8D7ACF3E2CE5C1B600E71C27 /* Main.storyboard */,
 				8D7ACF502CE6E4FA00E71C27 /* MyTableViewCell.swift */,
+				8D7ACF542CE7194F00E71C27 /* DetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -175,11 +181,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D7ACF462CE5C1B600E71C27 /* AppDelegate.swift in Sources */,
+				8D7ACF552CE7194F00E71C27 /* DetailView.swift in Sources */,
 				8D7ACF472CE5C1B600E71C27 /* SceneDelegate.swift in Sources */,
 				8D7ACF482CE5C1B600E71C27 /* ViewController.swift in Sources */,
 				8D7ACF4F2CE6DFA100E71C27 /* MemberListManagger.swift in Sources */,
 				8D7ACF4D2CE5CA5B00E71C27 /* Member.swift in Sources */,
 				8D7ACF512CE6E4FA00E71C27 /* MyTableViewCell.swift in Sources */,
+				8D7ACF532CE7192B00E71C27 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

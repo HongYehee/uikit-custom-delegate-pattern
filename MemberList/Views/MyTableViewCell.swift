@@ -3,20 +3,21 @@
 
 import UIKit
 
-class MyTableViewCell: UITableViewCell {
+final class MyTableViewCell: UITableViewCell {
+
+    //MARK: - 멤버 저장속성 구현
+    // 멤버가 변할때마다 자동으로 업데이트 되도록 구현 didSet(속성 감시자) ⭐️
+    var member: Member? {
+        didSet {
+            guard var member = member else { return }
+            mainImageView.image = member.memberImage
+            memberNameLabel.text = member.name
+            addressLabel.text = member.address
+        }
+    }
     
-//    // MARK: - 멤버 저장속성 구현
-//    // 멤버가 변할 때마다 자동으로 업데이트 되도록 didSet (속성감시자)
-//    var member: Member? {
-//        didSet {
-//            guard var member = member else { return }
-//            mainImageView.image = member.memberImage
-//            memberNameLabel.text = member.name
-//            
-//        }
-//    }
+    //MARK: - UI구현
     
-    // MARK: - UI 구현
     let mainImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -29,7 +30,7 @@ class MyTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+
     let addressLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 10)
@@ -41,24 +42,27 @@ class MyTableViewCell: UITableViewCell {
     let stackView: UIStackView = {
         let sv = UIStackView()
         sv.axis = .vertical
-        sv.distribution = .fill
+        sv.distribution  = .fill
         sv.alignment = .fill
-        sv.spacing =  5
+        sv.spacing = 5
         sv.translatesAutoresizingMaskIntoConstraints = false
         return sv
     }()
     
-    // 생성자에서 오토레이아웃 설정
+    //MARK: - 생성자 셋팅
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         setupStackView()
+        
+        // 셀 오토레이아웃 일반적으로 생성자에서 잡으면 됨 ⭐️⭐️⭐️
+        setConstraints()
     }
     
     func setupStackView() {
-        self.addSubview(mainImageView)
-        
-        // 셀 위에 스택 뷰 올리기
-        self.addSubview(stackView)
+
+        self.contentView.addSubview(mainImageView)
+        self.contentView.addSubview(stackView)
         
         // 스택뷰 위에 뷰들 올리기
         stackView.addArrangedSubview(memberNameLabel)
@@ -68,21 +72,13 @@ class MyTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//    }
-//
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//    }
     
-    // MARK: - 오토 레이아웃 설정
-    // 오토 레이아웃 정하는 정확한 시점
-    override func updateConstraints() {
-        setConstraints()
-        super.updateConstraints()
-    }
+    //MARK: - 오토레이아웃 셋팅
+    // (오토레이아웃 변하지 않는 경우) 일반적으로 생성자에서 잡으면 됨 ⭐️⭐️⭐️
+//    override func updateConstraints() {
+//        setConstraints()
+//        super.updateConstraints()
+//    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
