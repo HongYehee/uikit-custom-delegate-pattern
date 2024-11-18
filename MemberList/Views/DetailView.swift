@@ -39,7 +39,7 @@ final class DetailView: UIView {
         }
     }
     
-    //MARK: - UI 구현
+    // MARK: - UI 구현
     
     let mainImageView: UIImageView = {
         let imageView = UIImageView()
@@ -235,7 +235,7 @@ final class DetailView: UIView {
     // 애니메이션을 위한 속성 선언
     var stackViewTopConstraint: NSLayoutConstraint!
     
-    //MARK: - 생성자 설정
+    // MARK: - 생성자 설정
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -253,8 +253,7 @@ final class DetailView: UIView {
         self.addSubview(stackView)
     }
     
-    //MARK: - 노티피케이션 설정
-    
+    // MARK: - 노티피케이션 설정
     func setupNotification() {
         // 노티피케이션의 등록 ⭐️
         // (OS 차원에서 어떤 노티피케이션이 발생하는지 이미 정해져있음)
@@ -266,8 +265,7 @@ final class DetailView: UIView {
         memberIdTextField.delegate = self
     }
     
-    //MARK: - 오토 레이아웃 셋팅
-    
+    // MARK: - 오토 레이아웃 셋팅
     // 오토 레이아웃 업데이트
     override func updateConstraints() {
         setConstraints()
@@ -305,7 +303,7 @@ final class DetailView: UIView {
         ])
     }
     
-    //MARK: - 키보드가 나타날 때와 내려갈 때의 애니메이션 설정
+    // MARK: - 키보드가 나타날 때와 내려갈 때의 애니메이션 설정
     
     @objc func moveUpAction() {
         stackViewTopConstraint.constant = -20
@@ -325,21 +323,20 @@ final class DetailView: UIView {
         self.endEditing(true)
     }
     
-    //MARK: - 소멸자 구현
-    
+    // MARK: - 소멸자 구현
     deinit {
-        // 노티피케이션의 등록 해제 (해제안하면 계속 등록될 수 있음) ⭐️
+        // 노티피케이션의 등록 해제 (해제 안하면 계속 등록될 수 있음) ⭐️
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
 
-//MARK: - 텍스트필드 델리게이트 구현
+// MARK: - 텍스트필드 델리게이트 구현
 
 extension DetailView: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        // 멤버 아이디는 수정 못하도록 설정 (멤버아이디의 텍스트필드는 입력 안 되도록 설정)
+        // 멤버 아이디는 수정 못 하도록 설정 (멤버 아이디의 텍스트필드는 입력 안 되도록 설정)
         if textField == memberIdTextField {
             return false
         }
