@@ -1,4 +1,4 @@
-## 8️⃣ Custom Delegate Pattern 연습을 위한 '회원 정보 관리'
+## 8️⃣ Custom Delegate Pattern 연습을 위한 '회원 정보 관리 앱'
 - MVC Pattern
 - TableView + NavigationBar + TextField
 - Custom Delegate Pattern
